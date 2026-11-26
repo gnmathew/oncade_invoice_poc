@@ -113,11 +113,3 @@ The recipient pays on Oncade's hosted page (`links.invoice`). Methods: bank (ACH
 }
 ```
 - `settlementMethod`: `"verified"` (settled through payment rails) or `"manual"` (marked paid by the business). 📄
-- Is `data.invoiceId` the same value as the create response's `_id`? ❓ (design doc Q4)
-
-## Open questions and doc issues to report
-- Business ID isn't shown in the portal; `/me` is the only documented route. Confusing
-- `metadata` vs `externalMetadata`: the API reference is stale. Broken
-- Hosts are inconsistent across the docs: `www.oncade.gg`, `pay.oncade.gg`, `pay.oncade.xyz`, `app.oncade.xyz`, and `https://<host>` placeholders
-- Payout wallet: "no fallback" vs "owner wallet is the fallback"
-- No `processing` webhook, no test event, no signed timestamp

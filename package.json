@@ -1,0 +1,25 @@
+{
+  "name": "oncade-invoice-poc",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Proof of concept: create, list and cancel Oncade invoices, with webhooks",
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "check-connection": "tsx src/check-connection.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "zod": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^24.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.8.0"
+  }
+}

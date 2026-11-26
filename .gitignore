@@ -1,0 +1,13 @@
+# Secrets: never commit
+.env
+
+# Installed libraries and build output (these live inside the container)
+node_modules
+dist
+
+# Local database files
+*.db
+*.db-journal
+
+# macOS
+.DS_Store

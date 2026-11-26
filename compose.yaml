@@ -1,0 +1,29 @@
+# Starts the whole project with: docker compose up -d --build
+name: oncade-invoice-poc
+
+services:
+  # Container 1: our app
+  app:
+    build: .                     # build it using the Dockerfile
+    env_file: .env               # load secret settings (API key, etc.)
+    environment:
+      PORT: 3000
+      DATABASE_PATH: /data/app.db
+    ports:
+      - "3000:3000"              # open the app at http://localhost:3000
+    volumes:
+      - ./src:/app/src           # share source code live (edits appear instantly)
+      - app-data:/data           # keep the database file safe across restarts
+    restart: unless-stopped
+
+  # Container 2: the tunnel that gives the app a public address for webhooks
+  tunnel:
+    image: cloudflare/cloudflared:2026.11.2   # ready-made image, fixed version
+    command: tunnel --no-autoupdate --url http://app:3000
+    depends_on:
+      - app
+    restart: unless-stopped
+
+# Storage managed by Docker (not a folder on your Mac)
+volumes:
+  app-data:
